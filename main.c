@@ -18,6 +18,9 @@ int main()
 
     printf("Your Name is %s ", name);
 
+    getch();
+    system("cls");
+
     srand(time(0));
 
     ran = rand() % 100 + 1;
@@ -166,13 +169,13 @@ int main()
         while (u == 0)
         {
             // getchar();
-            printf("Computer Enter Number Where You Want to put (%c) : ", comp_choice);
+            // printf("Computer Enter Number Where You Want to put (%c) : ", comp_choice);
 
             ran = rand() % 10 + 2;
 
             comp_now = comp[ran];
 
-            printf("%c\n", comp_now);
+            // printf("%c\n", comp_now);
 
             if (comp_now == 49) // 1
                 num = 0;
@@ -202,7 +205,7 @@ int main()
             if ((t_t_t_number[num] == comp_choice) || (t_t_t_number[num] == user_choice))
             {
 
-                printf("Invaite Option \n");
+                // printf("Invaite Option \n");
 
                 // getch();
                 // system("cls");
@@ -210,6 +213,9 @@ int main()
             }
             else
             {
+
+                printf("Computer Enter Number Where You Want to put (%c) : ", comp_choice);
+                printf("%c\n", comp_now);
 
                 t_t_t_number[num] = comp_choice;
 
@@ -234,8 +240,10 @@ int main()
         i--;
 
         // exit(0);
-        
+
     } while (i > 0);
+    
+    // printf("Hello world!\n");
 
     getch();
 
