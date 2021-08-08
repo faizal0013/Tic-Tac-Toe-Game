@@ -6,17 +6,21 @@
 #include <time.h>
 #include <unistd.h>
 
+//Fucntion
+
+int checkwin(char *, char *, char *);
+
 int main()
 {
-    char user_choice, comp_choice, name[10];
+    char user_choice, comp_choice, player_name_1[10];
     int ran, u;
 
-    printf("Enter Your Name ");
-    scanf("%s", &name);
+    printf("Enter Your Name \a");
+    scanf("%s", &player_name_1);
 
     system("cls");
 
-    printf("Your Name is %s ", name);
+    printf("Your Name is %s \a", player_name_1);
 
     getch();
     system("cls");
@@ -32,7 +36,7 @@ int main()
         {
             system("cls");
 
-            printf("%s Enter Your Choice (X) Or (0) ", name);
+            printf("%s Enter Your Choice (X) Or (0) ", player_name_1);
             scanf("%c", &user_choice);
 
             u = 1;
@@ -41,16 +45,18 @@ int main()
             {
                 user_choice = 'X';
                 comp_choice = '0';
-                printf("\n\n%s Enter Your Choice (%c)\n", name, user_choice);
+                printf("\n\n%s Enter Your Choice (%c)\n", player_name_1, user_choice);
                 printf("Computer Enter Your Choice (%c)\n", comp_choice);
+                printf("\a");
                 break;
             }
             else if (user_choice == '0')
             {
                 user_choice = '0';
                 comp_choice = 'X';
-                printf("\n\n%s Enter Your Choice (%c)\n", name, user_choice);
+                printf("\n\n%s Enter Your Choice (%c)\n", player_name_1, user_choice);
                 printf("Computer Enter Your Choice (%c)\n", comp_choice);
+                printf("\a");
                 break;
             }
 
@@ -69,7 +75,8 @@ int main()
                 user_choice = '0';
 
                 printf("\nComputer Enter Your Choice (%c)\n", comp_choice);
-                printf("%s Enter Your Choice (%c)\n", name, user_choice);
+                printf("%s Enter Your Choice (%c)\n", player_name_1, user_choice);
+                printf("\a");
                 break;
             }
             else
@@ -78,7 +85,8 @@ int main()
                 user_choice = 'X';
 
                 printf("\nComputer Enter Your Choice (%c)\n", comp_choice);
-                printf("%s Enter Your Choice (%c)\n", name, user_choice);
+                printf("%s Enter Your Choice (%c)\n", player_name_1, user_choice);
+                printf("\a");
                 break;
             }
             // printf("Computer Enter Your Choice (%c)\n", comp_choice);
@@ -100,7 +108,7 @@ int main()
     do
     {
 
-        printf("\n\n%s Choice is (%c) & Computer Choice is (%c) \n\n", name, user_choice, comp_choice);
+        printf("\n\n\a%s Choice is (%c) & Computer Choice is (%c) \n\n", player_name_1, user_choice, comp_choice);
 
         printf("\t\t|\t\t|\t\t\n");
         printf("\t%c\t|\t%c\t|\t%c\n", t_t_t_number[0], t_t_t_number[1], t_t_t_number[2]);
@@ -122,7 +130,7 @@ int main()
         while (u == 1)
         {
             getchar();
-            printf("%s Enter Number Where You Want to put (%c) : ", name, user_choice);
+            printf("%s Enter Number Where You Want to put (%c) : ", player_name_1, user_choice);
             scanf("%c", &user_now);
 
             // user_now = user[user];
@@ -152,7 +160,7 @@ int main()
 
             if ((t_t_t_number[num] == user_choice) || (t_t_t_number[num] == comp_choice))
             {
-                printf("Invaite Option \n");
+                printf("Invaite move ! \n");
 
                 getch();
                 // system("cls");
@@ -164,6 +172,7 @@ int main()
                 t_t_t_number[num] = user_choice;
                 break;
             }
+            printf("\a");
         }
         // }
         while (u == 0)
@@ -205,7 +214,7 @@ int main()
             if ((t_t_t_number[num] == comp_choice) || (t_t_t_number[num] == user_choice))
             {
 
-                // printf("Invaite Option \n");
+                // printf("Invaite move ! \n");
 
                 // getch();
                 // system("cls");
@@ -221,31 +230,154 @@ int main()
 
                 break;
             }
+            printf("\a");
 
             // exit(0);
         }
-
-        // i--;
-
-        getch();
 
         if (u == 0)
             u = 1;
         else if (u == 1)
             u = 0;
-        // usleep(7000);
+
+        getch();
 
         system("cls");
 
         i--;
 
         // exit(0);
+        printf("\a");
 
     } while (i > 0);
-    
+
     // printf("Hello world!\n");
+
+    printf("\t\t|\t\t|\t\t\n");
+    printf("\t%c\t|\t%c\t|\t%c\n", t_t_t_number[0], t_t_t_number[1], t_t_t_number[2]);
+    printf("\t\t|\t\t|\t\t\n");
+    printf("-----------------------------------------------\n");
+    printf("\t\t|\t\t|\t\t\n");
+    printf("\t%c\t|\t%c\t|\t%c\n", t_t_t_number[3], t_t_t_number[4], t_t_t_number[5]);
+    printf("\t\t|\t\t|\t\t\n");
+    printf("-----------------------------------------------\n");
+    printf("\t\t|\t\t|\t\t\n");
+    printf("\t%c\t|\t%c\t|\t%c\n", t_t_t_number[6], t_t_t_number[7], t_t_t_number[8]);
+    printf("\t\t|\t\t|\t\t\n\n\n");
+
+    {
+
+        i = checkwin(t_t_t_number, &user_choice, &comp_choice);
+
+        if (i == 1)
+            printf("%s is Winner.....\n\a", player_name_1);
+
+        else if (i == -1)
+            printf("Compuer is winner.....\n\a");
+
+        else
+            printf("Game is drow.....\n\a");
+    }
 
     getch();
 
     return 0;
 }
+
+int checkwin(char *ptr, char *user_choice, char *comp_choice)
+{
+
+    /*
+    if user is equal then return 1
+    if computer is equal then return -1
+    if drow then return 0    
+    */
+
+    if ((ptr[0] == *user_choice) && (ptr[1] == *user_choice) && (ptr[2] == *user_choice))
+    {
+        return 1;
+    }
+
+    else if ((ptr[3] == *user_choice) && (ptr[4] == *user_choice) && (ptr[5] == *user_choice))
+    {
+        return 1;
+    }
+
+    else if ((ptr[6] == *user_choice) && (ptr[7] == *user_choice) && (ptr[8] == *user_choice))
+    {
+        return 1;
+    }
+
+    else if ((ptr[0] == *user_choice) && (ptr[3] == *user_choice) && (ptr[6] == *user_choice))
+    {
+        return 1;
+    }
+
+    else if ((ptr[1] == *user_choice) && (ptr[4] == *user_choice) && (ptr[7] == *user_choice))
+    {
+        return 1;
+    }
+
+    else if ((ptr[2] == *user_choice) && (ptr[5] == *user_choice) && (ptr[8] == *user_choice))
+    {
+        return 1;
+    }
+
+    else if ((ptr[0] == *user_choice) && (ptr[4] == *user_choice) && (ptr[8] == *user_choice))
+    {
+        return 1;
+    }
+
+    else if ((ptr[2] == *user_choice) && (ptr[4] == *user_choice) && (ptr[6] == *user_choice))
+    {
+        return 1;
+    }
+
+    if ((ptr[2] == *comp_choice) && (ptr[4] == *comp_choice) && (ptr[6] == *comp_choice))
+    {
+        return -1;
+    }
+
+    //-1
+    else if ((ptr[0] == *comp_choice) && (ptr[1] == *comp_choice) && (ptr[2] == *comp_choice))
+    {
+        return -1;
+    }
+
+    else if ((ptr[3] == *comp_choice) && (ptr[4] == *comp_choice) && (ptr[5] == *comp_choice))
+    {
+        return -1;
+    }
+
+    else if ((ptr[6] == *comp_choice) && (ptr[7] == *comp_choice) && (ptr[8] == *comp_choice))
+    {
+        return -1;
+    }
+
+    else if ((ptr[0] == *comp_choice) && (ptr[3] == *comp_choice) && (ptr[6] == *comp_choice))
+    {
+        return -1;
+    }
+
+    else if ((ptr[1] == *comp_choice) && (ptr[4] == *comp_choice) && (ptr[7] == *comp_choice))
+    {
+        return -1;
+    }
+
+    else if ((ptr[2] == *comp_choice) && (ptr[5] == *comp_choice) && (ptr[8] == *comp_choice))
+    {
+        return -1;
+    }
+
+    else if ((ptr[0] == *comp_choice) && (ptr[4] == *comp_choice) && (ptr[8] == *comp_choice))
+    {
+        return -1;
+    }
+
+    else
+    {
+        return 0;
+    }
+}
+
+//! Note welcome intro and sleep
