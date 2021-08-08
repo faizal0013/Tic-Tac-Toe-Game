@@ -7,7 +7,8 @@
 #include <unistd.h>
 
 //Fucntion
-
+void gotoxy(int x, int y);
+void welcome_intro();
 int checkwin(char *, char *, char *);
 
 int main()
@@ -15,14 +16,35 @@ int main()
     char user_choice, comp_choice, player_name_1[10];
     int ran, u;
 
+    welcome_intro();
+
+    system("cls");
+    {
+
+        gotoxy(50, 20);
+        printf("Loading:\n");
+        usleep(9000);
+
+        gotoxy(25, 21);
+        for (int i = 0; i < 50; i++)
+        {
+            printf("-");
+
+            usleep(7000);
+        }
+    }
+    system("cls");
+
     printf("Enter Your Name \a");
     scanf("%s", &player_name_1);
 
     system("cls");
 
-    printf("Your Name is %s \a", player_name_1);
+    printf("Your Name is %s \a\n\n", player_name_1);
 
-    getch();
+    system("pause");
+
+    // getch();
     system("cls");
 
     srand(time(0));
@@ -104,6 +126,11 @@ int main()
     int i = strlen(t_t_t_number);
 
     char user_now, comp_now;
+
+    printf("\n\n");
+
+    system("pause");
+
     // while (i > 0)
     do
     {
@@ -253,6 +280,23 @@ int main()
 
     // printf("Hello world!\n");
 
+    // system("cls");
+    {
+
+        gotoxy(50, 20);
+        printf("Loading:\n");
+        usleep(9000);
+
+        gotoxy(25, 21);
+        for (int i = 0; i < 50; i++)
+        {
+            printf("-");
+
+            usleep(7000);
+        }
+    }
+    system("cls");
+
     printf("\t\t|\t\t|\t\t\n");
     printf("\t%c\t|\t%c\t|\t%c\n", t_t_t_number[0], t_t_t_number[1], t_t_t_number[2]);
     printf("\t\t|\t\t|\t\t\n");
@@ -378,6 +422,31 @@ int checkwin(char *ptr, char *user_choice, char *comp_choice)
     {
         return 0;
     }
+}
+
+void gotoxy(int x, int y)
+{
+    {
+        COORD c;
+        c.X = x;
+        c.Y = y;
+        SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), c);
+    }
+}
+
+void welcome_intro()
+{
+
+    gotoxy(30, 15);
+    printf("***************     Welcome     ***************");
+    {
+        for (int i = 0; i < 100; i++)
+        {
+            usleep(1000);
+        }
+    }
+
+    // getch();
 }
 
 //! Note welcome intro and sleep
