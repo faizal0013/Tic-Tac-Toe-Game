@@ -67,8 +67,8 @@ int main()
             {
                 user_choice = 'X';
                 comp_choice = '0';
-                printf("\n\n%s Enter Your Choice (%c)\n", player_name_1, user_choice);
-                printf("Computer Enter Your Choice (%c)\n", comp_choice);
+                printf("\n\n%sChoice is (%c)\n", player_name_1, user_choice);
+                printf("Computer Choice is (%c)\n", comp_choice);
                 printf("\a");
                 break;
             }
@@ -76,8 +76,8 @@ int main()
             {
                 user_choice = '0';
                 comp_choice = 'X';
-                printf("\n\n%s Enter Your Choice (%c)\n", player_name_1, user_choice);
-                printf("Computer Enter Your Choice (%c)\n", comp_choice);
+                printf("\n\n%s Choice is (%c)\n", player_name_1, user_choice);
+                printf("Computer Choice is (%c)\n", comp_choice);
                 printf("\a");
                 break;
             }
@@ -96,8 +96,8 @@ int main()
                 comp_choice = 'X';
                 user_choice = '0';
 
-                printf("\nComputer Enter Your Choice (%c)\n", comp_choice);
-                printf("%s Enter Your Choice (%c)\n", player_name_1, user_choice);
+                printf("\nComputer Enter Choice is (%c)\n", comp_choice);
+                printf("%s Choice is (%c)\n", player_name_1, user_choice);
                 printf("\a");
                 break;
             }
@@ -106,8 +106,8 @@ int main()
                 comp_choice = '0';
                 user_choice = 'X';
 
-                printf("\nComputer Enter Your Choice (%c)\n", comp_choice);
-                printf("%s Enter Your Choice (%c)\n", player_name_1, user_choice);
+                printf("\nComputer Enter Choice is (%c)\n", comp_choice);
+                printf("%s Choice is (%c)\n", player_name_1, user_choice);
                 printf("\a");
                 break;
             }
@@ -123,13 +123,15 @@ int main()
     // char user_now, comp_now;
     int num;
 
-    int i = strlen(t_t_t_number);
+    int i = strlen(t_t_t_number), j;
 
     char user_now, comp_now;
 
     printf("\n\n");
 
     system("pause");
+
+    system("cls");
 
     // while (i > 0)
     do
@@ -197,6 +199,7 @@ int main()
             else
             {
                 t_t_t_number[num] = user_choice;
+
                 break;
             }
             printf("\a");
@@ -267,60 +270,96 @@ int main()
         else if (u == 1)
             u = 0;
 
-        getch();
+        // getch();
 
-        system("cls");
+        // printf("\a\n\n");
+
+        // system("pause");
+
+        // system("cls");
+
+        j = checkwin(t_t_t_number, &user_choice, &comp_choice);
+
+        if (j == 1)
+        {
+            system("cls");
+
+            // winner_or_drow = 1;
+
+            printf("\n\n\a%s Choice is (%c) & Computer Choice is (%c) \n\n", player_name_1, user_choice, comp_choice);
+
+            printf("\t\t|\t\t|\t\t\n");
+            printf("\t%c\t|\t%c\t|\t%c\n", t_t_t_number[0], t_t_t_number[1], t_t_t_number[2]);
+            printf("\t\t|\t\t|\t\t\n");
+            printf("-----------------------------------------------\n");
+            printf("\t\t|\t\t|\t\t\n");
+            printf("\t%c\t|\t%c\t|\t%c\n", t_t_t_number[3], t_t_t_number[4], t_t_t_number[5]);
+            printf("\t\t|\t\t|\t\t\n");
+            printf("-----------------------------------------------\n");
+            printf("\t\t|\t\t|\t\t\n");
+            printf("\t%c\t|\t%c\t|\t%c\n", t_t_t_number[6], t_t_t_number[7], t_t_t_number[8]);
+            printf("\t\t|\t\t|\t\t\n\n\n");
+
+            printf("\n\n%s is Winner.....\n\a", player_name_1);
+
+            break;
+        }
+
+        else if (j == -1)
+        {
+            system("cls");
+
+            // winner_or_drow = 1;
+
+            printf("\n\n\a%s Choice is (%c) & Computer Choice is (%c) \n\n", player_name_1, user_choice, comp_choice);
+
+            printf("\t\t|\t\t|\t\t\n");
+            printf("\t%c\t|\t%c\t|\t%c\n", t_t_t_number[0], t_t_t_number[1], t_t_t_number[2]);
+            printf("\t\t|\t\t|\t\t\n");
+            printf("-----------------------------------------------\n");
+            printf("\t\t|\t\t|\t\t\n");
+            printf("\t%c\t|\t%c\t|\t%c\n", t_t_t_number[3], t_t_t_number[4], t_t_t_number[5]);
+            printf("\t\t|\t\t|\t\t\n");
+            printf("-----------------------------------------------\n");
+            printf("\t\t|\t\t|\t\t\n");
+            printf("\t%c\t|\t%c\t|\t%c\n", t_t_t_number[6], t_t_t_number[7], t_t_t_number[8]);
+            printf("\t\t|\t\t|\t\t\n\n\n");
+
+            printf("\n\nCompuer is winner.....\n\a");
+
+            break;
+        }
 
         i--;
 
         // exit(0);
-        printf("\a");
+        printf("\a\n\n");
+
+        system("pause");
+
+        system("cls");
 
     } while (i > 0);
 
-    // printf("Hello world!\n");
+    j = checkwin(t_t_t_number, &user_choice, &comp_choice);
 
-    // system("cls");
+    if (j == 0)
     {
+        printf("\n\n\a%s Choice is (%c) & Computer Choice is (%c) \n\n", player_name_1, user_choice, comp_choice);
 
-        gotoxy(50, 20);
-        printf("Loading:\n");
-        usleep(9000);
+        printf("\t\t|\t\t|\t\t\n");
+        printf("\t%c\t|\t%c\t|\t%c\n", t_t_t_number[0], t_t_t_number[1], t_t_t_number[2]);
+        printf("\t\t|\t\t|\t\t\n");
+        printf("-----------------------------------------------\n");
+        printf("\t\t|\t\t|\t\t\n");
+        printf("\t%c\t|\t%c\t|\t%c\n", t_t_t_number[3], t_t_t_number[4], t_t_t_number[5]);
+        printf("\t\t|\t\t|\t\t\n");
+        printf("-----------------------------------------------\n");
+        printf("\t\t|\t\t|\t\t\n");
+        printf("\t%c\t|\t%c\t|\t%c\n", t_t_t_number[6], t_t_t_number[7], t_t_t_number[8]);
+        printf("\t\t|\t\t|\t\t\n\n\n");
 
-        gotoxy(25, 21);
-        for (int i = 0; i < 50; i++)
-        {
-            printf("-");
-
-            usleep(7000);
-        }
-    }
-    system("cls");
-
-    printf("\t\t|\t\t|\t\t\n");
-    printf("\t%c\t|\t%c\t|\t%c\n", t_t_t_number[0], t_t_t_number[1], t_t_t_number[2]);
-    printf("\t\t|\t\t|\t\t\n");
-    printf("-----------------------------------------------\n");
-    printf("\t\t|\t\t|\t\t\n");
-    printf("\t%c\t|\t%c\t|\t%c\n", t_t_t_number[3], t_t_t_number[4], t_t_t_number[5]);
-    printf("\t\t|\t\t|\t\t\n");
-    printf("-----------------------------------------------\n");
-    printf("\t\t|\t\t|\t\t\n");
-    printf("\t%c\t|\t%c\t|\t%c\n", t_t_t_number[6], t_t_t_number[7], t_t_t_number[8]);
-    printf("\t\t|\t\t|\t\t\n\n\n");
-
-    {
-
-        i = checkwin(t_t_t_number, &user_choice, &comp_choice);
-
-        if (i == 1)
-            printf("%s is Winner.....\n\a", player_name_1);
-
-        else if (i == -1)
-            printf("Compuer is winner.....\n\a");
-
-        else
-            printf("Game is drow.....\n\a");
+        printf("Game is drow.....\n\a");
     }
 
     getch();
@@ -338,85 +377,53 @@ int checkwin(char *ptr, char *user_choice, char *comp_choice)
     */
 
     if ((ptr[0] == *user_choice) && (ptr[1] == *user_choice) && (ptr[2] == *user_choice))
-    {
         return 1;
-    }
 
     else if ((ptr[3] == *user_choice) && (ptr[4] == *user_choice) && (ptr[5] == *user_choice))
-    {
         return 1;
-    }
 
     else if ((ptr[6] == *user_choice) && (ptr[7] == *user_choice) && (ptr[8] == *user_choice))
-    {
         return 1;
-    }
 
     else if ((ptr[0] == *user_choice) && (ptr[3] == *user_choice) && (ptr[6] == *user_choice))
-    {
         return 1;
-    }
 
     else if ((ptr[1] == *user_choice) && (ptr[4] == *user_choice) && (ptr[7] == *user_choice))
-    {
         return 1;
-    }
 
     else if ((ptr[2] == *user_choice) && (ptr[5] == *user_choice) && (ptr[8] == *user_choice))
-    {
         return 1;
-    }
 
     else if ((ptr[0] == *user_choice) && (ptr[4] == *user_choice) && (ptr[8] == *user_choice))
-    {
         return 1;
-    }
 
     else if ((ptr[2] == *user_choice) && (ptr[4] == *user_choice) && (ptr[6] == *user_choice))
-    {
         return 1;
-    }
-
-    if ((ptr[2] == *comp_choice) && (ptr[4] == *comp_choice) && (ptr[6] == *comp_choice))
-    {
-        return -1;
-    }
 
     //-1
     else if ((ptr[0] == *comp_choice) && (ptr[1] == *comp_choice) && (ptr[2] == *comp_choice))
-    {
         return -1;
-    }
 
     else if ((ptr[3] == *comp_choice) && (ptr[4] == *comp_choice) && (ptr[5] == *comp_choice))
-    {
         return -1;
-    }
 
     else if ((ptr[6] == *comp_choice) && (ptr[7] == *comp_choice) && (ptr[8] == *comp_choice))
-    {
         return -1;
-    }
 
     else if ((ptr[0] == *comp_choice) && (ptr[3] == *comp_choice) && (ptr[6] == *comp_choice))
-    {
         return -1;
-    }
 
     else if ((ptr[1] == *comp_choice) && (ptr[4] == *comp_choice) && (ptr[7] == *comp_choice))
-    {
         return -1;
-    }
 
     else if ((ptr[2] == *comp_choice) && (ptr[5] == *comp_choice) && (ptr[8] == *comp_choice))
-    {
         return -1;
-    }
 
     else if ((ptr[0] == *comp_choice) && (ptr[4] == *comp_choice) && (ptr[8] == *comp_choice))
-    {
         return -1;
-    }
+
+    else if ((ptr[2] == *comp_choice) && (ptr[4] == *comp_choice) && (ptr[6] == *comp_choice))
+        return -1;
 
     else
     {
